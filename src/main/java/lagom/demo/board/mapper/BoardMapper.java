@@ -14,4 +14,7 @@ public interface BoardMapper {
     * @Param으로 식별자 적용 
     * - @Param을 붙여서 적용하지 않으면 프레임워크가 인식하지 못함*/
     public List<BoardDTO.Response> findAll(@Param("request") BoardDTO.Request req);
+
+    /* 게시글 단건 조회*/
+    public BoardDTO.Response findById(@Param("boardId") String boardId);
 }

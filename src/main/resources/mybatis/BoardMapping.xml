@@ -22,4 +22,14 @@
             </otherwise>
         </choose>
     </select>
+
+    <select id="findById">
+        select
+            boardId, boardType, title, contents, writer,
+            isPublic, regDate
+        from edu_board
+        <where>
+            and boardId = #{boardId}
+        </where>
+    </select>
 </mapper>

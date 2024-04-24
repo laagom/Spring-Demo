@@ -16,4 +16,9 @@ public class BoardService {
     public List<BoardDTO.Response> getBoards(BoardDTO.Request req){
         return boardMapper.findAll(req);
     }
+
+    /* 게시글 단건 조회 */
+    public BoardDTO.Response getBoard(String boardId){
+        return boardMapper.findById(boardId);
+    }
 }

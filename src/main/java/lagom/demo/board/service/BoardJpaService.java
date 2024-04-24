@@ -10,14 +10,12 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class BoardJspService {
+public class BoardJpaService {
     private final BoardRepository boardRepository;
 
     /* (JPA) 게시글 조회 */
@@ -72,5 +70,13 @@ public class BoardJspService {
     @Transactional(rollbackFor = {Exception.class})
     public void deleteBoard(String boardId) {
         boardRepository.deleteById(boardId);
+    }
+
+    /* (JPA) 게시글 수정 */
+    @Transactional(rollbackFor = {Exception.class})
+    public void updateBoard(BoardDTO.RequestSave req, String boardId) {
+        boardRepository.findById(boardId)
+                .orElseThrow(() -> new EntityExistsException("게시물이 없습니다."))
+                .updateBoard(req);
     }
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import lagom.demo.board.dto.BoardDTO;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.domain.Persistable;
@@ -51,5 +52,10 @@ public class Board implements Persistable<String> {
         this.boardId = UUID.randomUUID().toString();
         this.regDate = new Date();
         this.isNew = true;
+    }
+
+    public void updateBoard(BoardDTO.RequestSave request) {
+        this.title = request.getTitle();
+        this.writer = request.getWriter();
     }
 }

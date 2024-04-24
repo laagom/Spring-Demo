@@ -44,7 +44,7 @@
         values (#{request.boardId}, #{request.boardType}, #{request.writer}, #{request.title}, #{request.contents}, #{request.isPublic}, now())
     </insert>
 
-    <!-- 게시글 수정-->
+    <!-- 게시글 수정 -->
     <update id="updateById">
         update edu_board set
             boardType   = #{request.boardType}
@@ -55,4 +55,10 @@
             ,regDate    = now()
         where boardId = #{boardId}
     </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deleteById">
+        delete from  edu_board
+        where boardId = #{boardId}
+    </delete>
 </mapper>

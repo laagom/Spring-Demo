@@ -37,4 +37,10 @@ public class BoardService {
     public int updateBoard(BoardDTO.RequestSave req, String boardId) {
         return boardMapper.updateById(req, boardId);
     }
+
+    /* 게시글 삭제 */
+    @Transactional(rollbackFor = {Exception.class})
+    public int deleteBoard(String boardId){
+        return boardMapper.deleteById(boardId);
+    }
 }

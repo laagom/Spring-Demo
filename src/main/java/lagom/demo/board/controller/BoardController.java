@@ -39,4 +39,10 @@ public class BoardController {
     public int updateBoard(@RequestBody BoardDTO.RequestSave req,@PathVariable("boardId") String boardId) {
         return boardService.updateBoard(req, boardId);
     }
+
+    /* 게시글 삭제 */
+    @DeleteMapping("/{boardId}")
+    public int deleteBoard(@PathVariable("boardId") String boardId){
+        return boardService.deleteBoard(boardId);
+    }
 }

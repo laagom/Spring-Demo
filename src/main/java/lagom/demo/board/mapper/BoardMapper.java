@@ -23,4 +23,7 @@ public interface BoardMapper {
 
     /* 게시글 수정 */
     public int updateById(@Param("request") BoardDTO.RequestSave req, @Param("boardId") String boardId);
+
+    /* 게시글 삭제 */
+    public int deleteById(@Param("boardId")String boardId);
 }

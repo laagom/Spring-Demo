@@ -5,6 +5,7 @@ import lagom.demo.board.entity.Board;
 import lagom.demo.board.service.BoardJspService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,9 +17,15 @@ import java.util.List;
 public class BoardJpaController {
     private final BoardJspService boardJspService;
 
-    /* (JPA) 게시글 조회*/
+    /* (JPA) 게시글 조회 */
     @GetMapping
     public List<BoardDTO.Response> getBoards(BoardDTO.Request req){
         return boardJspService.getBoards(req);
+    }
+
+    /* (JPA) 게시글 단건 조회 */
+    @GetMapping("/{boardId}")
+    public BoardDTO.Response getBoard(@PathVariable("boardId") String boardId) {
+        return boardJspService.getBoard(boardId);
     }
 }

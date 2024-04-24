@@ -43,4 +43,16 @@
         insert into edu_board (boardId, boardType, writer, title, contents, isPublic, regDate)
         values (#{request.boardId}, #{request.boardType}, #{request.writer}, #{request.title}, #{request.contents}, #{request.isPublic}, now())
     </insert>
+
+    <!-- 게시글 수정-->
+    <update id="updateById">
+        update edu_board set
+            boardType   = #{request.boardType}
+            ,title      = #{request.title}
+            ,writer     = #{request.writer}
+            ,contents   = #{request.contents}
+            ,isPublic   = #{request.isPublic}
+            ,regDate    = now()
+        where boardId = #{boardId}
+    </update>
 </mapper>

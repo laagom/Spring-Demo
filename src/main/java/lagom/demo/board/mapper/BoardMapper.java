@@ -19,5 +19,8 @@ public interface BoardMapper {
     public BoardDTO.Response findById(@Param("boardId") String boardId);
 
     /* 게시글 저장 */
-    public int save(@Param("request") BoardDTO.RequestSave request);
+    public int save(@Param("request") BoardDTO.RequestSave req);
+
+    /* 게시글 수정 */
+    public int updateById(@Param("request") BoardDTO.RequestSave req, @Param("boardId") String boardId);
 }

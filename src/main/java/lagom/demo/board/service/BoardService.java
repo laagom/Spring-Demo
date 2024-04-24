@@ -26,10 +26,15 @@ public class BoardService {
     }
 
     /* 게시글 저장 */
-    @Transactional
+    @Transactional(rollbackFor = {Exception.class})
     public int saveBoard(BoardDTO.RequestSave req){
         req.setBoardId(UUID.randomUUID().toString());
         return boardMapper.save(req);
     }
 
+    /* 게시글 수정 */
+    @Transactional(rollbackFor = {Exception.class})
+    public int updateBoard(BoardDTO.RequestSave req, String boardId) {
+        return boardMapper.updateById(req, boardId);
+    }
 }

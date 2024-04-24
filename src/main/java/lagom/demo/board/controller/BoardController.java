@@ -4,6 +4,7 @@ import lagom.demo.board.dto.BoardDTO;
 import lagom.demo.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public class BoardController {
     @PostMapping
     public int saveBoard(@RequestBody BoardDTO.RequestSave req){
         return boardService.saveBoard(req);
+    }
+
+    /* 게시글 수정 */
+    @PutMapping("/{boardId}")
+    public int updateBoard(@RequestBody BoardDTO.RequestSave req,@PathVariable("boardId") String boardId) {
+        return boardService.updateBoard(req, boardId);
     }
 }

@@ -1,5 +1,6 @@
 package lagom.demo.board.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class HelloDTO {
     @Getter
     @ToString
     public static class Request {
+        @NotBlank(message="ID는 필수항목입니다.")
         private String id;
         private String name;
     }

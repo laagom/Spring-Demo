@@ -1,5 +1,6 @@
 package lagom.demo.board.controller;
 
+import jakarta.validation.Valid;
 import lagom.demo.board.dto.HelloDTO;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +54,7 @@ public class HelloController {
      * - 단 값을 초기화 하지 않을 시 null로 출력됨
      * */
     @GetMapping("/param5")
-    public HelloDTO.Response param5(HelloDTO.Request dto){
+    public HelloDTO.Response param5(@Valid HelloDTO.Request dto){
         HelloDTO.Response response = HelloDTO.Response.builder()
                 .code(dto.getId())
                 .msg(dto.getName())

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="lagom.demo.board.mapper.BoardMapper">
+    <select id="findAll">
+        select
+            boardId, boardType, title, contents, writer,
+            isPublic, regDate
+        from edu_board
+        <where>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(request.keyword)">
+                and title like '%' || #{request.keyword} || '%'
+            </if>
+        </where>
+        <choose>
+            <when test="@org.apache.commons.lang3.StringUtils@isNotEmpty(request.keyword)">
+                ${request.orderBySQL}
+            </when>
+            <otherwise>
+                order by regdate desc
+            </otherwise>
+        </choose>
+    </select>
+</mapper>

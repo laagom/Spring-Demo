@@ -5,14 +5,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.domain.Persistable;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Getter
-@Builder    // Setter를 우회 or 대신하기 위해 Builder() 사용
 @ToString
+@Builder            // Setter를 우회 or 대신하기 위해 Builder() 사용
+@DynamicUpdate      // 변경된 값이 없는 경우 update 처리를 하지 않음
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "edu_board")
@@ -42,5 +45,11 @@ public class Board implements Persistable<String> {
     @Override
     public boolean isNew() {
         return boardId==null || this.isNew==null ? false : this.isNew.booleanValue();
+    }
+
+    public void createBoard() {
+        this.boardId = UUID.randomUUID().toString();
+        this.regDate = new Date();
+        this.isNew = true;
     }
 }

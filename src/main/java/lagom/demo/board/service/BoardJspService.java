@@ -48,6 +48,7 @@ public class BoardJspService {
     @Transactional(rollbackFor = {Exception.class})
     public int saveBoard(BoardDTO.RequestSave req) {
         //1. Builder를 통한 저장
+        /*
         Board entity = Board.builder()
                 .boardId(UUID.randomUUID().toString())
                 .boardType(req.getBoardType())
@@ -58,6 +59,12 @@ public class BoardJspService {
                 .regDate(new Date())
                 .build();
         boardRepository.save(entity);
+         */
+
+        // 2. Mapping 객체를 통해 저장
+        Board board = BoardDtoMapping.INSTANCE.toEntity(req);
+        board.createBoard();
+        boardRepository.save(board);
         return 1;
     }
 }

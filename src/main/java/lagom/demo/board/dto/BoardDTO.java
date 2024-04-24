@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
 
 public class BoardDTO {
+    /* 조회 요청 시 사용 */
     @Data
     public static class Request {
         private String keyword;
@@ -18,7 +19,20 @@ public class BoardDTO {
             return "order by " + split[0] + " " + split[1];
         }
     }
-
+    
+    /* 저장 요청 시 사용 */
+    @Data
+    public static class RequestSave{
+        private String boardId;
+        private String boardType;
+        private String title;
+        private String contents;
+        private String writer;
+        private String isPublic;
+        private Date regDate;
+    }
+    
+    /* 응답 시 사용*/
     @Data
     public static class Response {
         private String boardId;

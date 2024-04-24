@@ -37,4 +37,10 @@
     <sql id="condition-boardId">
         and boardId = #{boardId}
     </sql>
+
+    <!-- 게시글 저장 -->
+    <insert id="save">
+        insert into edu_board (boardId, boardType, writer, title, contents, isPublic, regDate)
+        values (#{request.boardId}, #{request.boardType}, #{request.writer}, #{request.title}, #{request.contents}, #{request.isPublic}, now())
+    </insert>
 </mapper>

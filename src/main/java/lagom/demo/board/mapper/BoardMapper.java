@@ -17,4 +17,7 @@ public interface BoardMapper {
 
     /* 게시글 단건 조회*/
     public BoardDTO.Response findById(@Param("boardId") String boardId);
+
+    /* 게시글 저장 */
+    public int save(@Param("request") BoardDTO.RequestSave request);
 }

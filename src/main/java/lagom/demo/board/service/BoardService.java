@@ -21,4 +21,6 @@ public class BoardService {
     public BoardDTO.Response getBoard(String boardId){
         return boardMapper.findById(boardId);
     }
+
+
 }

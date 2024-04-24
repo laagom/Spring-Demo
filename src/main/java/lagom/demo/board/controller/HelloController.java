@@ -62,7 +62,7 @@ public class HelloController {
         return response;
     }
 
-    /* PostMapping으로의 서버요청
+    /* PostMapping으로 서버요청
      * Post방식과 Json형태의 파라미터를 받을 때 @RequestBody사용
      * */
     @PostMapping("/param6")
@@ -71,8 +71,8 @@ public class HelloController {
     }
 
     /* PostMapping
-     * 객체의 형식으로 dto를 전달 받을 시 is, get, map등은 프레임워크에서 색량하니
-     * boolean isHas를 불러오는 경우 has명칭으로 조회
+     * 참조객체 DTO 전달 받을 시 is, get, map등의 예약어는 생략함
+     * Ex > boolean isHas를 불러오는 경우 has명칭으로 조회
      * - isHas를 사용하고 싶으면 Boolean 참조 객체를 사용해야 함
      * */
     @PostMapping("/param7")

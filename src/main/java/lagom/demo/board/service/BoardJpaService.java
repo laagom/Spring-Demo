@@ -20,8 +20,7 @@ public class BoardJpaService {
 
     /* (JPA) 게시글 조회 */
     public List<BoardDTO.Response> getBoards(BoardDTO.Request req){
-        //List<Board> boards = boardRepository.findAll();
-        
+        /*
         // keyword 값이 빈값이면 전체로 조회
         String keyword = req.getKeyword();
         List<Board> boards = StringUtils.isEmpty(keyword)
@@ -30,6 +29,10 @@ public class BoardJpaService {
 
         // 응답시 사용할 수 있는 DTO 형태로 변경
         return BoardDtoMapping.INSTANCE.toDto(boards);
+         */
+        
+        // DSL을 이용한 조회 쿼리
+        return boardRepository.findAllByQueryDSL(req);
     }
 
     /* (JPA) 게시글 단건 조회 */

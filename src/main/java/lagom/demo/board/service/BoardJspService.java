@@ -8,9 +8,12 @@ import lagom.demo.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +43,21 @@ public class BoardJspService {
         }else {
             throw new EntityExistsException("해당하는 게시물이 없습니다.");
         }
+    }
+
+    @Transactional(rollbackFor = {Exception.class})
+    public int saveBoard(BoardDTO.RequestSave req) {
+        //1. Builder를 통한 저장
+        Board entity = Board.builder()
+                .boardId(UUID.randomUUID().toString())
+                .boardType(req.getBoardType())
+                .isPublic(req.getIsPublic())
+                .contents(req.getIsPublic())
+                .writer(req.getWriter())
+                .title(req.getTitle())
+                .regDate(new Date())
+                .build();
+        boardRepository.save(entity);
+        return 1;
     }
 }

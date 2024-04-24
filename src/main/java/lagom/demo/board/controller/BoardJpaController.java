@@ -4,10 +4,7 @@ import lagom.demo.board.dto.BoardDTO;
 import lagom.demo.board.entity.Board;
 import lagom.demo.board.service.BoardJspService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,11 @@ public class BoardJpaController {
     @GetMapping("/{boardId}")
     public BoardDTO.Response getBoard(@PathVariable("boardId") String boardId) {
         return boardJspService.getBoard(boardId);
+    }
+    
+    /* (JPA) 게시글 저장 */
+    @PostMapping
+    public int saveBoard(@RequestBody BoardDTO.RequestSave req) {
+        return boardJspService.saveBoard(req);
     }
 }

@@ -67,4 +67,10 @@ public class BoardJspService {
         boardRepository.save(board);
         return 1;
     }
+
+    /* (JPA) 게시글 삭제 */
+    @Transactional(rollbackFor = {Exception.class})
+    public void deleteBoard(String boardId) {
+        boardRepository.deleteById(boardId);
+    }
 }

@@ -31,4 +31,10 @@ public class BoardJpaController {
     public int saveBoard(@RequestBody BoardDTO.RequestSave req) {
         return boardJspService.saveBoard(req);
     }
+    
+    /* (JPA) 게시글 삭제 */
+    @DeleteMapping
+    public void deleteBoard(@PathVariable("boardId") String boardId) {
+        boardJspService.deleteBoard(boardId);
+    }
 }

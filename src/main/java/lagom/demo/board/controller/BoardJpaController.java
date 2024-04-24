@@ -18,7 +18,7 @@ public class BoardJpaController {
 
     /* (JPA) 게시글 조회*/
     @GetMapping
-    public List<Board> getBoards(BoardDTO.Request req){
+    public List<BoardDTO.Response> getBoards(BoardDTO.Request req){
         return boardJspService.getBoards();
     }
 }

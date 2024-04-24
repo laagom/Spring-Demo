@@ -43,6 +43,11 @@ dependencies {
 	// P6Spy sql 로그
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+
+	//MapStruct - Entity -> DTO로 변환해 주는
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
 }
 
 tasks.named('test') {

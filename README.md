@@ -41,6 +41,7 @@ src/main/resources/mybatis/   BoardMapping.xml (MyBatis SQL 매핑)
 | | `GET /jpaBoards/{boardId}` | 게시글 조회 |
 | | `POST /jpaBoards` | 게시글 등록 |
 | | `PUT /jpaBoards/{boardId}` | 게시글 수정 |
+| | `DELETE /jpaBoards/{boardId}` | 게시글 삭제 |
 
 ## 구현 포인트
 

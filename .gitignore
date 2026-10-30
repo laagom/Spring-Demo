@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Generated sources (QueryDSL / MapStruct) ###
+src/main/generated/

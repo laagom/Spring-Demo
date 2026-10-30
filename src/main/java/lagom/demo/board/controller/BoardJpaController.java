@@ -32,7 +32,7 @@ public class BoardJpaController {
     }
     
     /* (JPA) 게시글 삭제 */
-    @DeleteMapping
+    @DeleteMapping("/{boardId}")
     public void deleteBoard(@PathVariable("boardId") String boardId) {
         boardJpaService.deleteBoard(boardId);
     }
